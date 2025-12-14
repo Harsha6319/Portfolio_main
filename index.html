@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsha Praneeth | Software Engineer Intern</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome 5 for Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" xintegrity="sha512-1ycn6IcaQQ40jBliWE8A+qO5uGzIphH6lT3u5EaN9u4X8hE/2h0w0+fQ7g+gY+2Pq+d4/r8e/v5h9/J+1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom config for a nice color palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#6366F1', // Indigo-500 for main accent
+                        'bg-dark': '#111827',     // Deep Dark Background (Gray-900)
+                        'text-light': '#F3F4F6',  // Light text for dark mode
+                        'glass-bg': 'rgba(255, 255, 255, 0.08)', // Transparent white for glass effect
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ensuring smooth scrolling for single-page navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Styling the glass effect explicitly since Tailwind config colors are complex for custom property values */
+        .glass-card {
+            background-color: var(--tw-colors-glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-bg-dark text-text-light font-sans antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 glass-card/90 backdrop-blur-lg shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary-blue">
+                Harsha Praneeth
+            </h1>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#about" class="text-text-light hover:text-primary-blue transition duration-200">About</a>
+                <a href="#skills" class="text-text-light hover:text-primary-blue transition duration-200">Skills</a>
+                <a href="#projects" class="text-text-light hover:text-primary-blue transition duration-200">Projects</a>
+                <a href="#contact" class="text-text-light hover:text-primary-blue transition duration-200">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-text-light hover:text-primary-blue transition duration-200" onclick="toggleMenu()">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Navigation Menu (Hidden by default) -->
+        <nav id="mobile-nav" class="hidden md:hidden glass-card/90 border-t border-gray-700">
+            <div class="flex flex-col space-y-2 px-4 pb-4">
+                <a href="#about" onclick="toggleMenu()" class="text-text-light hover:bg-white/10 p-2 rounded-lg transition duration-200">About</a>
+                <a href="#skills" onclick="toggleMenu()" class="text-text-light hover:bg-white/10 p-2 rounded-lg transition duration-200">Skills</a>
+                <a href="#projects" onclick="toggleMenu()" class="text-text-light hover:bg-white/10 p-2 rounded-lg transition duration-200">Projects</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-text-light hover:bg-white/10 p-2 rounded-lg transition duration-200">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 1. Hero / About Section -->
+        <section id="about" class="py-16 md:py-24 grid md:grid-cols-3 gap-12 items-center">
+            <div class="md:col-span-2">
+                <p class="text-primary-blue font-semibold text-lg mb-2">Hello, I'm</p>
+                <h2 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 text-text-light">
+                    P. Harsha Praneeth
+                </h2>
+                <h3 class="text-3xl font-medium text-gray-400 mb-6">
+                    Aspiring Software Engineer Intern
+                </h3>
+                <p class="text-lg text-gray-300 max-w-2xl mb-6">
+                    Highly motivated Engineering Student with a strong foundation in <span class="text-text-light font-semibold">Full-Stack Development technologies</span>, including Python, JavaScript, HTML5, CSS3, and REST APIs.
+                </p>
+                <!-- UPDATED BUTTON: Calls JS function to open modal -->
+                <button onclick="openModal()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-lg text-white bg-primary-blue hover:bg-primary-blue/90 transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue focus:ring-offset-bg-dark">
+                    Get In Touch
+                </button>
+            </div>
+            
+            <!-- Profile Picture -->
+            <div class="md:col-span-1 flex justify-center md:justify-end">
+                <img 
+                    src="https://res.cloudinary.com/dswnjw2h1/image/upload/v1765713189/profile_photo_background_change_i6f9b4.png" 
+                    alt="P. Harsha Praneeth Profile"
+                    class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-primary-blue shadow-2xl"
+                >
+            </div>
+        </section>
+
+        <!-- 2. Motivation / Education Section -->
+        <section id="motivation" class="py-12 border-t border-gray-700">
+            <h2 class="text-4xl font-bold text-center mb-10 text-primary-blue">
+                My Focus
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 text-center">
+                <div class="glass-card p-8 rounded-xl shadow-xl hover:shadow-primary-blue/50 transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-3 text-text-light">Internship Objective</h3>
+                    <p class="text-gray-300">
+                        I am pursuing an internship to know how my knowledge is useful and applied in real-world scenarios. My goal is to bridge the gap between theoretical knowledge and practical industry application, driving continuous learning and professional growth.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-xl shadow-xl hover:shadow-primary-blue/50 transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-3 text-text-light">Education</h3>
+                    <p class="text-gray-300">
+                        B.Tech in Engineering, Aurora Deemed to be University, Hyderabad (in collaboration with NxtWave Institutes of Advanced Technology - NIAT).
+                    </p>
+                    <p class="text-sm text-gray-400 mt-2">
+                        Started 3 months ago (Current Academic Year)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3. Skills Section (Updated with Font Awesome Icons) -->
+        <section id="skills" class="py-12 border-t border-gray-700">
+            <h2 class="text-4xl font-bold text-center mb-10 text-primary-blue">
+                Technical Toolkit
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Skill Card Template -->
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fab fa-python text-3xl mb-1 text-yellow-500"></i>
+                    <p class="font-semibold text-text-light">Python</p>
+                </div>
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fab fa-js-square text-3xl mb-1 text-yellow-400"></i>
+                    <p class="font-semibold text-text-light">JavaScript</p>
+                </div>
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fab fa-html5 text-3xl mb-1 text-orange-500"></i>
+                    <p class="font-semibold text-text-light">HTML5</p>
+                </div>
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fab fa-css3-alt text-3xl mb-1 text-blue-500"></i>
+                    <p class="font-semibold text-text-light">CSS3</p>
+                </div>
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fa-solid fa-wand-magic-sparkles text-3xl mb-1 text-blue-500"></i>
+                    <p class="font-semibold text-text-light">Tailwind CSS</p>
+                </div>
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fas fa-server text-3xl mb-1 text-gray-400"></i>
+                    <p class="font-semibold text-text-light">REST API Concepts</p>
+                </div>
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fab fa-bootstrap text-3xl mb-1 text-purple-400"></i>
+                    <p class="font-semibold text-text-light">Bootstrap</p>
+                </div>
+                <div class="flex flex-col items-center p-4 glass-card rounded-lg shadow-md border border-primary-blue/20 transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <i class="fab fa-git-alt text-3xl mb-1 text-red-500"></i>
+                    <p class="font-semibold text-text-light">Git \& GitHub</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Projects Section -->
+        <section id="projects" class="py-12 border-t border-gray-700">
+            <h2 class="text-4xl font-bold text-center mb-10 text-primary-blue">
+                Key Projects \& Experience
+            </h2>
+
+            <div class="space-y-12">
+                
+                <!-- Project 1: Basee44 Hackathon -->
+                <div class="glass-card p-6 rounded-xl shadow-lg border-l-4 border-primary-blue transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <h3 class="text-2xl font-bold mb-2 text-text-light">AI-Powered Website Development</h3>
+                    <p class="text-lg text-gray-400 mb-4">Basee44 Hackathon Participant</p>
+                    <p class="text-gray-300 mb-4">
+                        Built a fully working website using AI tools, demonstrating rapid prototyping and integration skills in a high-pressure environment. Successfully delivered a functional web product.
+                    </p>
+                    <a href="https://quick-gig-copy-cb871498.base44.app" target="_blank" class="text-primary-blue hover:text-primary-blue/80 font-medium inline-flex items-center">
+                        View Live Project 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m-6-6L10 14"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Project 2: SmartFarm -->
+                <div class="glass-card p-6 rounded-xl shadow-lg border-l-4 border-primary-blue transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <h3 class="text-2xl font-bold mb-2 text-text-light">SmartFarm - Responsive Web Application</h3>
+                    <p class="text-lg text-gray-400 mb-4">CSS \& HTML Project</p>
+                    <p class="text-gray-300 mb-4">
+                        A focused project demonstrating strong foundational skills in HTML and CSS. Developed a responsive front-end design, ensuring excellent user experience on mobile and desktop devices.
+                    </p>
+                    <a href="https://dhhsdhdt-gjhgg.github.io/SmartFarm/" target="_blank" class="text-primary-blue hover:text-primary-blue/80 font-medium inline-flex items-center">
+                        View Live Project 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m-6-6L10 14"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Project 3: Portfolio Website -->
+                <div class="glass-card p-6 rounded-xl shadow-lg border-l-4 border-primary-blue transform hover:-translate-y-1 transition duration-300 hover:shadow-primary-blue/50">
+                    <h3 class="text-2xl font-bold mb-2 text-text-light">Personal Portfolio Website</h3>
+                    <p class="text-lg text-gray-400 mb-4">Self-Project</p>
+                    <p class="text-gray-300 mb-4">
+                        Created a professional, self-branded platform to showcase technical skills, projects, and learning journey. Managed version control using Git and GitHub.
+                    </p>
+                    <a href="https://harsha6319.github.io/Portfolio/" target="_blank" class="text-primary-blue hover:text-primary-blue/80 font-medium inline-flex items-center">
+                        View Live Project 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m-6-6L10 14"></path></svg>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. Contact Section (Updated with Cards & Download Option) -->
+        <section id="contact" class="py-12 border-t border-gray-700 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-primary-blue">
+                Let's Connect
+            </h2>
+            
+            <!-- Contact Info Cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-10">
+                
+                <!-- Email Card -->
+                <a href="mailto:harsha2319@gmail.com" class="glass-card p-6 rounded-xl shadow-lg hover:shadow-primary-blue/50 transition duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center">
+                    <i class="fas fa-envelope text-4xl text-primary-blue mb-3"></i>
+                    <p class="font-semibold text-text-light text-lg">Email</p>
+                    <p class="text-gray-400 text-sm break-all">harsha6319@gmail.com</p>
+                </a>
+                
+                <!-- LinkedIn Card -->
+                <a href="https://www.linkedin.com/in/harsha-praneeth-446b1736b/" target="_blank" class="glass-card p-6 rounded-xl shadow-lg hover:shadow-primary-blue/50 transition duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center">
+                    <i class="fab fa-linkedin text-4xl text-primary-blue mb-3"></i>
+                    <p class="font-semibold text-text-light text-lg">LinkedIn</p>
+                    <p class="text-gray-400 text-sm">View Profile</p>
+                </a>
+                
+                <!-- Location Card -->
+                <div class="glass-card p-6 rounded-xl shadow-lg hover:shadow-primary-blue/50 transition duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center">
+                    <i class="fas fa-map-marker-alt text-4xl text-primary-blue mb-3"></i>
+                    <p class="font-semibold text-text-light text-lg">Location</p>
+                    <p class="text-gray-400 text-sm">Hyderabad, India</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                
+                <!-- Send Message Button -->
+                <button onclick="openModal()" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg shadow-lg text-white bg-primary-blue hover:bg-primary-blue/90 transition duration-200">
+                    <i class="fas fa-paper-plane mr-2"></i> Send a Message (Form)
+                </button>
+                
+                <!-- Download Resume Button (New) -->
+                <a href="resume.pdf" download="P_Harsha_Praneeth_Resume.pdf" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg shadow-lg text-primary-blue bg-white hover:bg-gray-100 transition duration-200 border border-primary-blue">
+                    <i class="fas fa-file-pdf mr-2"></i> Download Resume (PDF)
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            &copy; 2025 P. Harsha Praneeth. All rights reserved. Built with passion and Tailwind CSS.
+        </div>
+    </footer>
+
+    <!-- Contact Form Modal (Initially Hidden) -->
+    <div id="contact-modal" class="fixed inset-0 bg-bg-dark bg-opacity-70 z-[100] hidden flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeModal(event)">
+        <!-- Modal Content with Glass Effect -->
+        <div class="glass-card p-8 rounded-xl shadow-2xl w-full max-w-md" onclick="event.stopPropagation()">
+            
+            <!-- Message Box (Hidden by default) -->
+            <div id="message-box" class="hidden mb-4"></div>
+
+            <div id="form-container">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-primary-blue">Contact Harsha</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-text-light transition duration-150">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <!-- PASTE YOUR FORMSPREE URL HERE -->
+                <form id="contact-form" action="https://formspree.io/f/mjknzrkg" method="POST"> 
+                    <!-- IMPORTANT: The Formspree URL goes in the "action" attribute above. -->
+
+                    <!-- Hidden input to specify the recipient email -->
+                    <input type="hidden" name="_to" value="harsha2319@gmail.com">
+
+                    <!-- Recruiter Name -->
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
+                        <input type="text" id="name" name="name" required
+                            class="w-full px-3 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-primary-blue focus:border-primary-blue transition duration-150 text-text-dark bg-gray-800/50">
+                    </div>
+
+                    <!-- Company Email -->
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Company Email</label>
+                        <input type="email" id="email" name="_replyto" required 
+                            class="w-full px-3 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-primary-blue focus:border-primary-blue transition duration-150 text-text-dark bg-gray-800/50">
+                        <p class="mt-1 text-xs text-gray-500">I will reply to this email.</p>
+                    </div>
+
+                    <!-- Message (Optional) -->
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Your Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" 
+                                class="w-full px-3 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-primary-blue focus:border-primary-blue transition duration-150 text-text-dark bg-gray-800/50"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-primary-blue hover:bg-primary-blue/90 text-white font-semibold py-3 rounded-lg transition duration-200 shadow-md">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('contact-modal');
+        const form = document.getElementById('contact-form');
+        const formContainer = document.getElementById('form-container');
+        const messageBox = document.getElementById('message-box');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        // --- Mobile Menu Toggle ---
+        function toggleMenu() {
+            mobileNav.classList.toggle('hidden');
+        }
+
+        // --- Modal Control ---
+        function openModal() {
+            // Reset modal state when opening
+            formContainer.classList.remove('hidden');
+            messageBox.classList.add('hidden');
+            form.reset(); 
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(event) {
+            if (!event || event.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        // --- Form Submission Handler (AJAX) ---
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            messageBox.classList.add('hidden');
+            
+            // Set loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = 'Sending...';
+            submitButton.disabled = true;
+            
+            // Show the loading/feedback container immediately, hide form
+            formContainer.classList.add('hidden');
+
+            try {
+                const response = await fetch(e.target.action, {
+                    method: form.method,
+                    body: new FormData(e.target),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    messageBox.innerHTML = '<div class="p-4 rounded-lg bg-green-900 text-green-300 font-semibold border border-green-600">✅ Thank you! Your message has been sent successfully. The modal will close shortly.</div>';
+                    messageBox.classList.remove('hidden');
+                    form.reset(); 
+                    setTimeout(closeModal, 4000); // Close modal after 4 seconds
+                } else {
+                    // Handle server-side errors (e.g., failed validation, bad endpoint)
+                    const data = await response.json();
+                    const errorMessage = data.error || 'An unexpected error occurred.';
+                    messageBox.innerHTML = `<div class="p-4 rounded-lg bg-red-900 text-red-300 font-semibold border border-red-600">❌ Submission Failed: ${errorMessage}</div>`;
+                    messageBox.classList.remove('hidden');
+                    
+                    // On failure, show form again quickly
+                    setTimeout(() => {
+                        formContainer.classList.remove('hidden');
+                        messageBox.classList.add('hidden');
+                    }, 3000);
+                }
+            } catch (error) {
+                // Handle network errors
+                messageBox.innerHTML = '<div class="p-4 rounded-lg bg-red-900 text-red-300 font-semibold border border-red-600">❌ Network Error. Please check your connection and try again.</div>';
+                messageBox.classList.remove('hidden');
+                
+                // On error, show form again quickly
+                setTimeout(() => {
+                    formContainer.classList.remove('hidden');
+                    messageBox.classList.add('hidden');
+                }, 3000);
+            } finally {
+                // Restore button state
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
